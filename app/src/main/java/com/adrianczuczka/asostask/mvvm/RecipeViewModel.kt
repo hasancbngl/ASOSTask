@@ -19,11 +19,15 @@ class RecipeViewModel(private val repository: RecipeRepository) : ViewModel() {
                 repository.getRecipes()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::onRecipesLoaded)
+                    .subscribe(this::onRecipesLoaded, this::onError)
         )
     }
 
     private fun onRecipesLoaded(result: List<Recipe>) {
         recipes.value = result
+    }
+
+    private fun onError(t: Throwable) {
+        t.printStackTrace()
     }
 }

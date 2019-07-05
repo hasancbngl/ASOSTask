@@ -5,8 +5,7 @@ import androidx.lifecycle.Observer
 import com.adrianczuczka.asostask.RxImmediateSchedulerRule
 import com.adrianczuczka.asostask.models.Recipe
 import com.adrianczuczka.asostask.network.RecipeRepository
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import com.nhaarman.mockitokotlin2.*
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.ClassRule
@@ -27,11 +26,11 @@ class RecipeViewModelTest {
     private val mockRepository: RecipeRepository = mock()
     private val mockObserver: Observer<List<Recipe>> = mock()
 
-    private lateinit var mockViewModel: RecipeViewModel
+    private lateinit var viewModel: RecipeViewModel
 
     @Before
     fun `set up`() {
-        mockViewModel = RecipeViewModel(mockRepository)
+        viewModel = RecipeViewModel(mockRepository)
     }
 
     @Test
@@ -42,8 +41,16 @@ class RecipeViewModelTest {
                 Recipe("Pear")
         )
         whenever(mockRepository.getRecipes()).thenReturn(Observable.just(list))
-        mockViewModel.recipes.observeForever(mockObserver)
-        mockViewModel.getRecipes()
-        assert(mockViewModel.recipes.value == list)
+        viewModel.recipes.observeForever(mockObserver)
+        viewModel.getRecipes()
+        verify(mockObserver).onChanged(list)
+    }
+
+    @Test
+    fun `given the network call returns an error, when getting `() {
+        whenever(mockRepository.getRecipes()).thenReturn(Observable.error(Throwable()))
+        viewModel.recipes.observeForever(mockObserver)
+        viewModel.getRecipes()
+        verify(mockObserver, never()).onChanged(any())
     }
 }
