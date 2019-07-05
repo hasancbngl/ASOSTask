@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ASOSTask</string>
+    <string name="recipe_list_item_image_content_description">The image of the recipe</string>
 </resources>

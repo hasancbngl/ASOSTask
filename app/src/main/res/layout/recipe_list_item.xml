@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/recipeImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/recipe_list_item_image_content_description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/recipeTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/recipeIngredientAmount"
+        app:layout_constraintEnd_toStartOf="@id/recipeChevron"
+        app:layout_constraintStart_toEndOf="@id/recipeImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1.5"
+        tools:text="Crock Pot Roast" />
+
+    <TextView
+        android:id="@+id/recipeIngredientAmount"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@id/recipeTime"
+        app:layout_constraintEnd_toStartOf="@id/recipeChevron"
+        app:layout_constraintStart_toEndOf="@id/recipeImage"
+        app:layout_constraintTop_toBottomOf="@id/recipeTitle"
+        app:layout_constraintVertical_weight="1"
+        tools:text="5 ingredients" />
+
+    <TextView
+        android:id="@+id/recipeTime"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/recipeChevron"
+        app:layout_constraintStart_toEndOf="@id/recipeImage"
+        app:layout_constraintTop_toBottomOf="@id/recipeIngredientAmount"
+        app:layout_constraintVertical_weight="1"
+        tools:text="420 minutes" />
+
+    <ImageView
+        android:id="@+id/recipeChevron"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/right_chevron"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

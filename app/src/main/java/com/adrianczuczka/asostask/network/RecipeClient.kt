@@ -19,4 +19,8 @@ object RecipeClient {
     val api: RecipeAPI by lazy {
         retrofit.create(RecipeAPI::class.java)
     }
+
+    val repository: RecipeRepository by lazy {
+        RecipeRepository(api)
+    }
 }
