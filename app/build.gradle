@@ -33,9 +33,10 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
     implementation 'io.reactivex:rxandroid:1.2.1'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-inline:2.13.0'
     testImplementation "android.arch.core:core-testing:1.1.1"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
 }
