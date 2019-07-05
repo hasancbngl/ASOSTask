@@ -2,12 +2,14 @@ package com.adrianczuczka.asostask.mvvm
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.adrianczuczka.asostask.RxImmediateSchedulerRule
 import com.adrianczuczka.asostask.models.Recipe
 import com.adrianczuczka.asostask.network.RecipeRepository
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Observable
 import org.junit.Before
+import org.junit.ClassRule
 import org.junit.Rule
 import org.junit.Test
 
@@ -15,6 +17,12 @@ class RecipeViewModelTest {
     @Rule
     @JvmField
     var rule = InstantTaskExecutorRule()
+
+    companion object {
+        @ClassRule
+        @JvmField
+        val schedulers = RxImmediateSchedulerRule()
+    }
 
     private val mockRepository: RecipeRepository = mock()
     private val mockObserver: Observer<List<Recipe>> = mock()
