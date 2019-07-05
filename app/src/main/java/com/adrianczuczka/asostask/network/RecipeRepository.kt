@@ -2,10 +2,8 @@ package com.adrianczuczka.asostask.network
 
 import com.adrianczuczka.asostask.models.Recipe
 import io.reactivex.Observable
-import retrofit2.http.GET
 
-interface RecipeAPI {
+class RecipeRepository(val api: RecipeAPI) {
 
-    @GET("recipes.json")
-    fun getRecipes(): Observable<List<Recipe>>
+    fun getRecipes(): Observable<List<Recipe>> = api.getRecipes()
 }
