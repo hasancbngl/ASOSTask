@@ -25,9 +25,6 @@ class RecipeListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_list)
         loadRecipes()
-        recipeListActivitySearchButton.setOnClickListener {
-
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -38,7 +35,7 @@ class RecipeListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.mainMenuSearchIcon -> {
-                showSearchMenu(recipeListActivitySearchGroup.visibility == VISIBLE)
+                showSearchMenu(recipeListActivitySearchGroup.visibility == GONE)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -52,8 +49,36 @@ class RecipeListActivity : AppCompatActivity() {
         viewModel.recipes.observe(this, Observer { list ->
             recipeListActivityProgressBar.gone()
             recipeRecyclerView makeVisibleAndApply {
+                val recipeAdapter = RecipeAdapter(list) {
+
+                }
                 layoutManager = LinearLayoutManager(this@RecipeListActivity)
-                adapter = RecipeAdapter(list) {
+                adapter = recipeAdapter
+                recipeListActivitySearchButton.setOnClickListener {
+                    var items = list
+                    if (recipeListActivitySearchEditText.text.isNotEmpty()) {
+                        items = items.filter { recipe ->
+                            arrayListOf(recipe.name).apply {
+                                addAll(recipe.ingredients.map { it.name })
+                                addAll(recipe.steps)
+                            }.any { it.toLowerCase().contains(recipeListActivitySearchEditText.text.toString().toLowerCase()) }
+                        }
+                    }
+                    if (recipeListActivityDifficultySpinner.selectedItemId != 0L) {
+                        items = items.filter { recipe -> recipe.difficulty.name.toLowerCase() == (recipeListActivityDifficultySpinner.selectedItem as String).toLowerCase() }
+                    }
+                    if (recipeListActivityTimeSpinner.selectedItemId != 0L) {
+                        items = items.filter { recipe ->
+                            when (recipeListActivityTimeSpinner.selectedItemId) {
+                                1L -> 10..20
+                                2L -> 21..40
+                                else -> 40..Integer.MAX_VALUE
+                            }.contains(recipe.time)
+                        }
+                    }
+                    recipeAdapter.items = items
+                    recipeAdapter.notifyDataSetChanged()
+                    recipeListActivitySearchGroup.gone()
                 }
             }
         })

@@ -9,7 +9,7 @@ import com.adrianczuczka.asostask.util.inflate
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.recipe_list_item.view.*
 
-class RecipeAdapter(private val items: List<Recipe>, private val listener: (Recipe) -> Unit) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+class RecipeAdapter(var items: List<Recipe>, private val listener: (Recipe) -> Unit) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder = RecipeViewHolder(parent.inflate(R.layout.recipe_list_item))
 
