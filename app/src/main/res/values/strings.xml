@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">ASOSTask</string>
     <string name="recipe_list_item_image_content_description">The image of the recipe</string>
+    <string name="recipe_list_activity_search_bar_hint">Search for recipes</string>
+    <string name="recipe_list_activity_filter_difficulty">Filter by difficulty:</string>
+    <string name="recipe_list_activity_filter_time">Filter by time:</string>
+    <string name="search">Search</string>
+    <string-array name="difficulty">
+        <item>Filter By Difficulty:</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+    <string-array name="time">
+        <item>Filter By Time:</item>
+        <item>10–20 min</item>
+        <item>20–40 min</item>
+        <item>40+ min</item>
+    </string-array>
 </resources>

@@ -26,4 +26,9 @@ class RecipeListActivityTest {
                             hasDescendant(withText("420 minutes"))
                     )))
     }
+
+    @Test
+    fun show_progress_bar() {
+        Espresso.onView(withId(R.id.recipeListActivityProgressBar)).check(matches(isDisplayed()))
+    }
 }

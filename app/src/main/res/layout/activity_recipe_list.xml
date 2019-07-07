@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/recipeListActivitySearchEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/recipe_list_activity_search_bar_hint"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <Spinner
+        android:id="@+id/recipeListActivityDifficultySpinner"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:entries="@array/difficulty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipeListActivitySearchEditText" />
+
+    <Spinner
+        android:id="@+id/recipeListActivityTimeSpinner"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:entries="@array/time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipeListActivityDifficultySpinner" />
+
+    <Button
+        android:id="@+id/recipeListActivitySearchButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipeListActivityTimeSpinner" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/recipeListActivitySearchGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="recipeListActivitySearchEditText,
+         recipeListActivityDifficultySpinner, recipeListActivityTimeSpinner, recipeListActivitySearchButton" />
 
     <ProgressBar
         android:id="@+id/recipeListActivityProgressBar"
@@ -18,6 +63,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible" />
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipeListActivitySearchButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
