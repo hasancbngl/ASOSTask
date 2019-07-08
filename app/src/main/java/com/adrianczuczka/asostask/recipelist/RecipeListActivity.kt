@@ -13,6 +13,7 @@ import com.adrianczuczka.asostask.R
 import com.adrianczuczka.asostask.mvvm.RecipeViewModel
 import com.adrianczuczka.asostask.mvvm.RecipeViewModelFactory
 import com.adrianczuczka.asostask.network.RecipeClient
+import com.adrianczuczka.asostask.recipedetails.RecipeDetailsActivity
 import com.adrianczuczka.asostask.util.gone
 import com.adrianczuczka.asostask.util.makeVisibleAndApply
 import kotlinx.android.synthetic.main.activity_recipe_list.*
@@ -50,7 +51,7 @@ class RecipeListActivity : AppCompatActivity() {
             recipeListActivityProgressBar.gone()
             recipeRecyclerView makeVisibleAndApply {
                 val recipeAdapter = RecipeAdapter(list) {
-
+                    startActivity(RecipeDetailsActivity.getStartIntent(this@RecipeListActivity, it))
                 }
                 layoutManager = LinearLayoutManager(this@RecipeListActivity)
                 adapter = recipeAdapter

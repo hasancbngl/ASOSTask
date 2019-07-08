@@ -17,4 +17,5 @@
         <item>20–40 min</item>
         <item>40+ min</item>
     </string-array>
+    <string name="instructions">Instructions</string>
 </resources>

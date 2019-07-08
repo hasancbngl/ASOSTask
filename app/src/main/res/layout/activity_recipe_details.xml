@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/recipeDetailsActivityImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/recipe_list_item_image_content_description"
+        app:layout_constraintDimensionRatio="5:2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/recipeDetailsActivityTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/recipeDetailsActivityImage"
+        tools:text="Roast Asparagus" />
+
+    <TextView
+        android:id="@+id/recipeDetailsActivityIngredientsAmountTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:maxLines="1"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/recipeDetailsActivityIngredientsRecyclerView"
+        app:layout_constraintTop_toBottomOf="@id/recipeDetailsActivityTitleTextView"
+        tools:text="Ingredients: 5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recipeDetailsActivityIngredientsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@id/recipeDetailsActivityStepsTextView"
+        app:layout_constraintTop_toBottomOf="@id/recipeDetailsActivityIngredientsAmountTextView"
+        app:layout_constraintVertical_weight="1" />
+
+    <TextView
+        android:id="@+id/recipeDetailsActivityStepsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:text="@string/instructions"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/recipeDetailsActivityStepsRecyclerView"
+        app:layout_constraintTop_toBottomOf="@id/recipeDetailsActivityIngredientsRecyclerView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recipeDetailsActivityStepsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipeDetailsActivityStepsTextView"
+        app:layout_constraintVertical_weight="1" />
+</androidx.constraintlayout.widget.ConstraintLayout>
